@@ -1,0 +1,17 @@
+description: |
+  Saves the cache to the CircleCI cache store using an auto-generated key tag.
+parameters:
+  path:
+    type: string
+    default: "/home/circleci/project"
+    description: Set's the path of the cache on the runner machine
+steps:
+  - run:
+      name: ccache Statistics
+      command: |
+        ccache -s
+
+  - save_cache:
+        key: ccache-{{ checksum "/tmp/cache_date" }}
+        paths:
+          - << parameters.path >>/.ccache
