@@ -13,6 +13,12 @@ steps:
       command: |
         ccache -s
 
+  - run:
+      name: Set date & time variable
+      command: |
+        echo "export CACHE_DATE=`date +%Y-%m-%dT%H:%M:%S`" >> $BASH_ENV
+        echo $CACHE_DATE > /tmp/cache_date
+        
   - save_cache:
         key: ccache-{{ checksum "/tmp/cache_date" }}
         paths:
