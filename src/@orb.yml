@@ -1,7 +1,7 @@
 version: 2.1
 
 description: >
-  Create and speedup C/C++ builds using ccache
+  Cache and speedup C/C++ project builds within CircleCI jobs using ccache on Linux.
 
 display:
   source_url: "https://github.com/dynomite567/ccache-orb"
