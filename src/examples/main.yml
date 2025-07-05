@@ -8,7 +8,7 @@ usage:
   workflows:
     main:
       jobs:
-      - build
+        - build
   jobs:
     build:
       docker:
@@ -19,6 +19,6 @@ usage:
         - ccache/install
         - ccache/restore
         - run:
-          name: Compile project
-          command: gcc exampleProject.c
+            name: Compile project
+            command: gcc exampleProject.c
         - ccache/save
