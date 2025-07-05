@@ -19,7 +19,7 @@ steps:
       name: Setup ccache
       command: |
         ccache --set-config=cache_dir='/home/circleci/project/${CIRCLE_PROJECT_REPONAME}/.ccache'
-        ccache --set-config=max_size='$<< parameters.max_size >>'
+        ccache --set-config=max_size=$<< parameters.max_size >>
         ccache --set-config=compression=true
         ccache -p
         ccache -z
