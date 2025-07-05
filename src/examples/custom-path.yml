@@ -16,10 +16,10 @@ usage:
       steps:
         - checkout
         - ccache/install
-        - ccache/restore
+        - ccache/restore:
             path: /home/circleci/project/examplefolder
         - run: 
             name: Compile project
             command: gcc exampleProject.c
-        - ccache/save
+        - ccache/save:
             path: /home/circleci/project/examplefolder
