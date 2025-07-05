@@ -1,4 +1,4 @@
-description: >
+description: |
   An example on how to use the ccache orb with a custom path.
 
 usage:
@@ -17,9 +17,9 @@ usage:
         - checkout
         - ccache/install
         - ccache/restore
-          path: /home/circleci/project/examplefolder
+            path: /home/circleci/project/examplefolder
         - run: 
-          name: Compile project
-          command: gcc exampleProject.c
+            name: Compile project
+            command: gcc exampleProject.c
         - ccache/save
-          path: /home/circleci/project/examplefolder
+            path: /home/circleci/project/examplefolder
