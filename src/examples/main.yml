@@ -17,7 +17,7 @@ usage:
         - checkout
         - ccache/install
         - ccache/restore
-        - run: 
+        - run:
           name: Compile project
           command: gcc exampleProject.c
         - ccache/save
