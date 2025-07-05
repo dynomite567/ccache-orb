@@ -1,15 +1,12 @@
-# Orb Template
+# Ccache for CircleCI
 
 
 [![CircleCI Build Status](https://circleci.com/gh/QdmNa8ANx1ffexCBKDunDj/ccache.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/QdmNa8ANx1ffexCBKDunDj/ccache) [![CircleCI Orb Version](https://badges.circleci.com/orbs/dynomite567/ccache.svg)](https://circleci.com/developer/orbs/orb/dynomite567/ccache) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/dynomite567/ccache-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
 
+An orb that helps speed up C/C++ project builds using ccache.
 
-A project template for Orbs.
-
-This repository is designed to be automatically ingested and modified by the CircleCI CLI's `orb init` command.
-
-_**Edit this area to include a custom title and description.**_
+Works on Linux-based runners only.
 
 ---
 
