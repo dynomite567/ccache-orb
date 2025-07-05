@@ -1,0 +1,25 @@
+description: |
+  Saves the cache to the CircleCI cache store using an auto-generated key tag.
+parameters:
+  path:
+    type: string
+    default: "/home/circleci/project"
+    description: Set's the path of the cache on the runner machine
+steps:
+  - run:
+      name: ccache Statistics
+      environment:
+        CCDIR: << parameters.path >>
+      command: |
+        ccache -s
+
+  - run:
+      name: Set date & time variable
+      command: |
+        echo "export CACHE_DATE=`date +%Y-%m-%dT%H:%M:%S`" >> $BASH_ENV
+        echo $CACHE_DATE > /tmp/cache_date
+
+  - save_cache:
+      key: ccache-{{ checksum "/tmp/cache_date" }}
+      paths:
+        - << parameters.path >>/.ccache

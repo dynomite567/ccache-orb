@@ -1,0 +1,38 @@
+description: |
+  Restores the existing cache from the CircleCI cache store.
+  If one doesn't exist, it will simply configure itself.
+parameters:
+  path:
+    type: string
+    default: "/home/circleci/project"
+    description: Set's the path of the cache on the runner machine
+  max_size:
+    type: string
+    default: "500M"
+    description: "Max size of the cache"
+  create_symlinks:
+    type: boolean
+    default: true
+    description: "Should the orb create necessary symlinks for the executors? (Default is yes)"
+
+steps:
+  - restore_cache:
+      keys: ccache-
+
+  - run:
+      name: Setup ccache
+      environment:
+        CCDIR: << parameters.path >>
+      command: |
+        ccache --set-config=cache_dir='$CCDIR/.ccache'
+        ccache --set-config=max_size=$<< parameters.max_size >>
+        ccache --set-config=compression=true
+        ccache -p
+        ccache -z
+
+  - when:
+      condition: << parameters.create_symlinks >>
+      steps:
+        - run:
+            name: Update symlinks
+            command: sudo /usr/sbin/update-ccache-symlinks
