@@ -1,0 +1,23 @@
+description: >
+  A basic example on how to use the ccache orb.
+
+usage:
+  version: 2.1
+  orbs:
+    ccache: dynomite567/ccache@1.0.0
+  workflows:
+    main:
+      jobs:
+        - build
+  jobs:
+    build:
+      docker:
+        - image: cimg/base:2025.07
+      steps:
+        - checkout
+        - ccache/install
+        - ccache/restore
+        - run: 
+          name: Compile project
+          command: gcc exampleProject.c
+        - ccache/save
