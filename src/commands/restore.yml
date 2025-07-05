@@ -2,6 +2,10 @@ description: |
   Restores the existing cache from the CircleCI cache store.
   If one doesn't exist, it will simply configure itself.
 parameters:
+  path:
+    type: string
+    default: "/home/circleci/project"
+    description: Set's the path of the cache on the runner machine
   max_size:
     type: string
     default: "500M"
@@ -17,8 +21,10 @@ steps:
 
   - run:
       name: Setup ccache
+      environment:
+        CCDIR: << parameters.path >>
       command: |
-        ccache --set-config=cache_dir='/home/circleci/project/${CIRCLE_PROJECT_REPONAME}/.ccache'
+        ccache --set-config=cache_dir='$CCDIR/.ccache'
         ccache --set-config=max_size=$<< parameters.max_size >>
         ccache --set-config=compression=true
         ccache -p
