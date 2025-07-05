@@ -6,9 +6,10 @@ parameters:
     default: "4.11.3"
     description: The version of ccache you would like to install.
 steps:
- - run:
-     name: Install ccache
-     command: |
-       dlurl="https://github.com/ccache/ccache/releases/download/v<<parameters.version>>/ccache-<<parameters.version>>-linux-x86_64.tar.xz"
-       curl -sSL $dlurl | tar -xz -C /bin ccache-<<parameters.version>>-linux-x86_64/ccache
-       sudo mv ccache<<parameters.version>>-linux-x86_64/ccache /bin && rm -rf ccache-<<parameters.version>>-linux-x86_64
+  - run:
+      name: Install ccache
+      command: |
+        dlurl="https://github.com/ccache/ccache/releases/download/v<<parameters.version>>/ccache-<<parameters.version>>-linux-x86_64.tar.xz"
+        curl -sSL $dlurl | tar -xz -C /bin ccache-<<parameters.version>>-linux-x86_64/ccache
+        sudo mv ccache<<parameters.version>>-linux-x86_64/ccache /bin
+        rm -rf `ccache-<<parameters.version>>-linux-x86_64/`
