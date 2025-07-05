@@ -1,5 +1,5 @@
 description: |
-  An example on how to use the ccache orb with a custom path.
+  An example on how to use the ccache orb with a custom path with a custome cache size.
 
 usage:
   version: 2.1
@@ -18,7 +18,8 @@ usage:
         - ccache/install
         - ccache/restore:
             path: /home/circleci/project/examplefolder
-        - run: 
+            max_size: 900M
+        - run:
             name: Compile project
             command: gcc exampleProject.c
         - ccache/save:
