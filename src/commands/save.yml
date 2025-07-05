@@ -8,6 +8,8 @@ parameters:
 steps:
   - run:
       name: ccache Statistics
+      environment:
+        CCDIR: << parameters.path >>
       command: |
         ccache -s
 
