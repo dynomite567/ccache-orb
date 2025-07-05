@@ -27,4 +27,6 @@ steps:
   - when:
       condition: << parameters.create_symlinks >>
       steps:
-        - run: sudo /usr/sbin/update-ccache-symlinks
+        - run: 
+            name: Update symlinks
+            command: sudo /usr/sbin/update-ccache-symlinks
