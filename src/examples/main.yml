@@ -8,11 +8,12 @@ usage:
   workflows:
     main:
       jobs:
-        - build
+      - build
   jobs:
     build:
       docker:
         - image: cimg/base:2025.07
+
       steps:
         - checkout
         - ccache/install
