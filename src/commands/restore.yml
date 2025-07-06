@@ -29,6 +29,7 @@ steps:
         ccache --set-config=compression=true
         ccache -p
         ccache -z
+        echo "export CCDIR=$CCDIR" >> $BASH_ENV
 
   - when:
       condition: << parameters.create_symlinks >>
