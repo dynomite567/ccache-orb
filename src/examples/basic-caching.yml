@@ -22,7 +22,7 @@ usage:
             name: Compile project
             command: ccache gcc exampleProject.c
         ## Alternatively, you can specify ccache's complier symlinks as a path variable.
-        #- run: 
+        #- run:
         #    name: Add ccache symlinks into path
         #    command: echo 'export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"' >> $BASH_ENV
         - ccache/save
